@@ -80,8 +80,10 @@ TEST(PiezasTest, piece_at_outside_bounds)
 	ASSERT_EQ(game.pieceAt(-1,-1), Invalid);
 }
 
+/*
 TEST(PiezasTest, piece_at_outside_bounds)
 {
 	Piezas game;
 	ASSERT_EQ(game.pieceAt(-1,-1), Invalid);
 }
+*/
