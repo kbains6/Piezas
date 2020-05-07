@@ -22,6 +22,17 @@
 **/
 Piezas::Piezas()
 {
+	board.resize(BOARD_ROWS);
+	for(int i = 0; i < BOARD_ROWS; i++){
+		board[i].resize(BOARD_COLS);
+	}
+
+	for(int i = 0; i < BOARD_ROWS; i++){
+		for(int k = 0; k < BOARD_COLS; k++){
+			board[i][k] = Blank;
+		}
+	}
+	turn = X;
 }
 
 /**
@@ -30,6 +41,11 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+	for(int i = 0; i < BOARD_ROWS; i++){
+		for(int k = 0; k < BOARD_COLS; k++){
+			board[i][k] = Blank;
+		}
+	}
 }
 
 /**
@@ -42,7 +58,22 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
-    return Blank;
+	if(column < 0 || column > 3){
+		return Invalid;
+	}
+	for(int i = 0; i < 3; i++){
+		if(board[i][column] == Blank){
+			board[i][column] = turn;
+			if(turn == X){
+				turn = O;
+			}
+			else{
+				turn = X;
+			}
+			return board[i][column];
+		}
+	}
+	return Blank; // full	
 }
 
 /**
@@ -51,7 +82,10 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+	if(row > BOARD_ROWS || row < 0 || column > BOARD_COLS || column < 0){
+		return Invalid;	
+	}
+	return board[row][column]; 
 }
 
 /**
@@ -65,5 +99,60 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-    return Blank;
+	int x_score, o_score, x_max, o_max = 0;
+	for(int i = 0; i < (int)board.size(); i++){
+		x_score = 0;
+		o_score = 0;
+		for(int k = 0; k < (int)board[i].size(); k++){
+			if(board[i][k] == Blank){
+				return Invalid;
+			}
+			else if(board[i][k] == X){
+				x_score++;
+				if(x_score >= x_max){
+					x_max = x_score;	
+				}
+				o_score = 0;
+			}
+			else{
+				o_score++;
+				if(o_score >= o_max){
+					o_max = o_score;	
+				}
+				x_score = 0;
+			}
+		}
+	}	
+	for(int i = 0; i < board[0].size(); i++){
+		x_score = 0;
+		o_score = 0;
+		for(int k = 0; k < (int)board.size(); k++){
+			if(board[i][k] == Blank){
+				return Invalid;
+			}
+			else if(board[i][k] == X){
+				x_score++;
+				if(x_score >= x_max){
+					x_max = x_score;	
+				}
+				o_score = 0;
+			}
+			else{
+				o_score++;
+				if(o_score >= o_max){
+					o_max = o_score;	
+				}
+				x_score = 0;
+			}
+		}
+	}
+	if(x_max == o_max){
+		return Blank;
+	}
+	if(x_max > o_max){
+		return X;
+	}
+	else{
+		return O;
+	}
 }

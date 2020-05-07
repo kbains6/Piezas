@@ -18,3 +18,25 @@ TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
 }
+
+TEST(PiezasTest, create_board)
+{
+	Piezas game;
+	ASSERT_EQ(game.pieceAt(0,0), Blank);
+}
+
+TEST(PiezasTest, drop_piece_x)
+{
+	Piezas game;
+	ASSERT_EQ(game.dropPiece(0), X);
+}
+
+TEST(PiezasTest, drop_piece_o)
+{
+	Piezas game;
+	game.dropPiece(0);
+	ASSERT_EQ(game.dropPiece(0), O);
+}
+
+
+
