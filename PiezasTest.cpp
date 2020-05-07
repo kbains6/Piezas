@@ -66,12 +66,12 @@ TEST(PiezasTest, piece_at_x)
 	ASSERT_EQ(game.pieceAt(0,0), X);
 }
 
-TEST(PiezasTest, piece_at_y)
+TEST(PiezasTest, piece_at_o)
 {
 	Piezas game;
 	game.dropPiece(0);	
 	game.dropPiece(0);	
-	ASSERT_EQ(game.pieceAt(0,1), O);
+	ASSERT_EQ(game.pieceAt(0,0), O);
 }
 
 TEST(PiezasTest, piece_at_outside_bounds)
