@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/kbains6/Piezas.svg?branch=master)](https://travis-ci.org/kbains6/Piezas)
+
+[![Coverage Status](https://coveralls.io/repos/github/kbains6/Piezas/badge.svg?branch=master)](https://coveralls.io/github/kbains6/Piezas?branch=master)
+
+
 # Piezas
 
 ## Associated Enumerated Types
