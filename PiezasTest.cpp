@@ -69,7 +69,7 @@ TEST(PiezasTest, piece_at_x)
 TEST(PiezasTest, piece_at_o)
 {
 	Piezas game;
-	game.dropPiece(0);	
+	game.dropPiece(1);	
 	game.dropPiece(0);	
 	ASSERT_EQ(game.pieceAt(0,0), O);
 }
