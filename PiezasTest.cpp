@@ -141,9 +141,6 @@ TEST(PiezasTest, o_win_game)
 	game.dropPiece(2);
 	game.dropPiece(3); // x
 	game.dropPiece(2);
-	ASSERT_EQ(game.gameState(), O);
+	ASSERT_EQ(game.gameState(),O);
 }
-
-
-
 
