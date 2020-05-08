@@ -108,7 +108,7 @@ TEST(PiezasTest, x_win_game)
 	ASSERT_EQ(game.gameState(), X);
 }
 
-TEST(PiezasTest, o_win_game)
+TEST(PiezasTest, o_horizontal_win_game)
 {
 	Piezas game;
 	game.dropPiece(5); // x
@@ -130,6 +130,28 @@ TEST(PiezasTest, o_win_game)
 	game.dropPiece(2); // x
 	ASSERT_EQ(game.gameState(), O);
 }
+
+TEST(PiezasTest, o_vetical_win_game)
+{
+	Piezas game;
+	game.dropPiece(5); // x
+	game.dropPiece(0);
+	game.dropPiece(5); 
+	game.dropPiece(0);
+	game.dropPiece(5); 
+	game.dropPiece(0);
+	game.dropPiece(1); 
+	game.dropPiece(1);
+	game.dropPiece(1);
+	game.dropPiece(2);
+	game.dropPiece(2);
+	game.dropPiece(2);
+	game.dropPiece(3);
+	game.dropPiece(3);
+	game.dropPiece(3);
+	ASSERT_EQ(game.gameState(), O);
+}
+
 
 TEST(PiezasTest, tie_blank_win_game)
 {
