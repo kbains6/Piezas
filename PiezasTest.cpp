@@ -149,3 +149,13 @@ TEST(PiezasTest, tie_blank_win_game)
 	ASSERT_TRUE(ans);
 }
 
+TEST(PiezasTest, invalid_game_state)
+{
+	Piezas game;
+	bool ans = false;
+	if(game.gameState() == Invalid)
+		ans = true;
+	ASSERT_TRUE(ans);
+}
+
+

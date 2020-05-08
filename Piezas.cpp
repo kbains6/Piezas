@@ -144,14 +144,12 @@ Piece Piezas::gameState()
 			o_max = o_score;	
 		}		
 	}
-
+	
 	if(o_max > x_max){
 		return O;
 	}
 	if(x_max > o_max){
 		return X;
-	}
-        else{	
-		return Blank;
-	}
+	}      
+return Blank;
 }
