@@ -105,54 +105,45 @@ Piece Piezas::pieceAt(int row, int column)
  * or horizontally. If both X's and O's have the same max number of pieces in a
  * line, it is a tie.
  **/
+
 Piece Piezas::gameState()
 {
-	int x_max, o_max, x_score, o_score = 0;
-	for(int i = 0; i < BOARD_ROWS; i++){
-		x_score = 0;
-		o_score = 0;
-		for(int k = 0; k < BOARD_COLS; k++){
-			if(board[i][k] == Blank)
-				return Invalid;	
-			else if(board[i][k] == X){
-				x_score += 1;
-				if(x_score > x_max)
-					x_max = x_score;			
-				o_score = 0;
-			}
-			else{
-				o_score += 1;
-				if(o_score > o_max)
-					o_max = o_score;		
-				x_score = 0;	
-			}
-		}
-	}		
-	for(int i = 0; i < BOARD_COLS; i++){
-		x_score = 0;
-		o_score = 0;
-		for(int k = 0; k < BOARD_ROWS; k++){
-			if(board[k][i] == X){
-				x_score += 1;
-				if(x_score > x_max)
-					x_max = x_score;		
-				o_score = 0;	
-			}
-			else{
-				o_score += 1;
-				if(o_score > o_max)
-					o_max = o_score;		
-				x_score = 0;	
+	int x_score = 0;
+	int o_score = 0;
+	for(int i = 0; i < 3; i++){
+		for(int k = 0; k < 4; k++){
+			if(board[i][k] == Blank){
+				return Invalid;
 			}
 		}
 	}
-	if(o_max > x_max){
-	   return O;
+	for(int i = 0; i < 3; i++){
+		for(int k = 0; k < 3; k++){
+			if(board[i][k] == board[i][k+1]){
+				if(board[i][k] == X){
+					x_score++;
+				} else {
+					o_score++;
+				}
+			}
+		}
 	}
-	else if(x_max > o_max){
-	   return X;
+	for(int i = 0; i < 4; i++){ 
+		for(int k = 0; k < 2; k++){
+			if(board[k][i] == board[k+1][i]){
+				if(board[k][i] == X){
+					x_score++;
+				} else {
+					o_score++;
+				}
+			}
+		}
 	}
-	else{	
-	   return Blank;
+	if(x_score > o_score){
+		return X;
 	}
+	else if(x_score < o_score){
+		return O;
+	}
+	return Blank;
 }
