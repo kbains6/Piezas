@@ -99,7 +99,8 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-	int x_max, o_max = 0;
+	int x_max = 0;
+	int o_max = 0;
 	for(int i = 0; i < 4; i++){
 		int x_score = 0;
 		int o_score = 0;
