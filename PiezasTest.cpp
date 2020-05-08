@@ -99,12 +99,12 @@ TEST(PiezasTest, tie_game)
 	game.dropPiece(1);
 	game.dropPiece(0);
 	game.dropPiece(1);
+	game.dropPiece(2);
 	game.dropPiece(3);
-	game.dropPiece(4);
+	game.dropPiece(2);
 	game.dropPiece(3);
-	game.dropPiece(4);
+	game.dropPiece(2);
 	game.dropPiece(3);
-	game.dropPiece(4);
 	ASSERT_EQ(game.gameState(), Blank);
 }
 
