@@ -148,5 +148,5 @@ Piece Piezas::gameState()
 	else if(x_max > o_max)
 		return X;	
 	else	
-		return O;
+		return Blank;
 }
