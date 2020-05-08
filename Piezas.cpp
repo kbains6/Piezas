@@ -59,20 +59,28 @@ void Piezas::reset()
 Piece Piezas::dropPiece(int column)
 {
 	if(column < 0 || column > 3){
+		if(turn == X){
+			turn = O;
+		}
+		else if(turn == O){
+			turn = X;
+		}
 		return Invalid;
 	}
 	for(int i = 0; i < 3; i++){
 		if(board[i][column] == Blank){
 			board[i][column] = turn;
-			if(turn == X){
-				turn = O;
-			}
-			else if(turn == O){
-				turn = X;
-			}
+			if(turn == X)
+				turn = O;		
+			else
+				turn = X;	
 			return board[i][column];
 		}
 	}
+	if(turn == X)
+		turn = O;	
+	else
+		turn = X;	
 	return Blank; // full	
 }
 
@@ -109,16 +117,14 @@ Piece Piezas::gameState()
 			}
 			else if(board[i][k] == X){
 				x_score++;
-				if(x_score > x_max){
-					x_max = x_score;	
-				}		
+				if(x_score > x_max)
+					x_max = x_score;			
 				o_score = 0;
 			}
 			else{
 				o_score++;
-				if(o_score > o_max){
-					o_max = o_score;	
-				}
+				if(o_score > o_max)
+					o_max = o_score;		
 				x_score = 0;	
 			}
 		}
@@ -129,16 +135,14 @@ Piece Piezas::gameState()
 		for(int k = 0; k < 3; k++){
 			if(board[k][i] == X){
 				x_score++;
-				if(x_score > x_max){
-					x_max = x_score;	
-				}
+				if(x_score > x_max)
+					x_max = x_score;		
 				o_score = 0;	
 			}
 			else{
 				o_score++;
-				if(o_score > o_max){
-					o_max = o_score;	
-				}
+				if(o_score > o_max)
+					o_max = o_score;		
 				x_score = 0;	
 			}
 		}
