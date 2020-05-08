@@ -121,9 +121,9 @@ Piece Piezas::gameState()
 		for(int k = 0; k < 3; k++){
 			if(board[i][k] == board[i][k+1]){
 				if(board[i][k] == X){
-					x_score++;
+					x_score += 1;
 				} else {
-					o_score++;
+					o_score += 1;
 				}
 			}
 		}
@@ -132,18 +132,18 @@ Piece Piezas::gameState()
 		for(int k = 0; k < 2; k++){
 			if(board[k][i] == board[k+1][i]){
 				if(board[k][i] == X){
-					x_score++;
+					x_score += 1;
 				} else {
-					o_score++;
+					o_score += 1;
 				}
 			}
 		}
 	}
 	if(x_score > o_score){
-		return X;
+	   return X;
 	}
 	else if(x_score < o_score){
-		return O;
+	   return O;
 	}
 	return Blank;
 }
