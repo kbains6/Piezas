@@ -114,7 +114,7 @@ Piece Piezas::gameState()
 					x_max = x_score;	
 				}	
 			}
-			else{
+			else if(board[k][i] == O){
 				o_score++;
 				if(o_score >= o_max){
 					o_max = o_score;	
@@ -134,7 +134,7 @@ Piece Piezas::gameState()
 					x_max = x_score;	
 				}	
 			}
-			else{
+			else if(board[k][i] == O){
 				o_score++;
 				if(o_score >= o_max){
 					o_max = o_score;	
