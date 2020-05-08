@@ -103,7 +103,7 @@ Piece Piezas::gameState()
 	for(int i = 0; i < 4; i++){
 		int x_score = 0;
 		int o_score = 0;
-		for(int k = 0; k < 3; k++){
+		for(int k = 1; k < 3; k++){
 			if(board[k][i] == board[k-1][i]){
 				if(board[k][i] == Blank){
 					return Invalid;
@@ -126,7 +126,7 @@ Piece Piezas::gameState()
 	for(int i = 0; i < 3; i++){
 		int x_score = 0;
 		int o_score = 0;
-		for(int k = 0; k < 4; k++){
+		for(int k = 1; k < 4; k++){
 			if(board[i][k] == board[i][k-1]){
 				if(board[i][k] == X){
 					x_score++;
