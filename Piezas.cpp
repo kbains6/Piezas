@@ -67,7 +67,7 @@ Piece Piezas::dropPiece(int column)
 			if(turn == X){
 				turn = O;
 			}
-			else{
+			else if(turn == O){
 				turn = X;
 			}
 			return board[i][column];
@@ -150,7 +150,7 @@ Piece Piezas::gameState()
 	if(x_max > o_max){
 		return X;
 	}
-  	if(x_max == o_max){
+        else{	
 		return Blank;
-	}	
+	}
 }
