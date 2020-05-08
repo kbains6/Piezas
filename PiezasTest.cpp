@@ -90,24 +90,6 @@ TEST(PiezasTest, reset_board)
 	ASSERT_EQ(game.pieceAt(0,0), Blank);
 }
 
-TEST(PiezasTest, tie_game)
-{
-	Piezas game;
-	game.dropPiece(3);
-	game.dropPiece(3);
-	game.dropPiece(3);
-	game.dropPiece(2);
-	game.dropPiece(2);
-	game.dropPiece(2);
-	game.dropPiece(1);
-	game.dropPiece(1);
-	game.dropPiece(1);
-	game.dropPiece(0);
-	game.dropPiece(0);
-	game.dropPiece(0);
-	ASSERT_EQ(game.gameState(), Blank);
-}
-
 TEST(PiezasTest, x_win_game)
 {
 	Piezas game;
@@ -129,18 +111,46 @@ TEST(PiezasTest, x_win_game)
 TEST(PiezasTest, o_win_game)
 {
 	Piezas game;
-	game.dropPiece(0); // x
-	game.dropPiece(0);
-	game.dropPiece(0); // x
-	game.dropPiece(1);
-	game.dropPiece(1); // x
-	game.dropPiece(2);
-	game.dropPiece(1); // x
-	game.dropPiece(3);
-	game.dropPiece(3); // x
-	game.dropPiece(2);
-	game.dropPiece(3); // x
-	game.dropPiece(2);
-	ASSERT_EQ(game.gameState(),O);
+	for(int i = 0; i < 3; i++){
+		for(int k = 0; k < 4; k++){
+			game.dropPiece(-1);
+			game.dropPiece(k);
+		}
+	}
+	bool ans = false;
+	if(game.gameState() == O)
+		ans = true;
+	ASSERT_TRUE(ans);
 }
+
+TEST(PiezasTest, tie_blank_win_game)
+{
+	Piezas game;
+	for(int i = 0; i < 3; i++){
+		for(int k = 0; k < 4; k++){
+			game.dropPiece(k);
+			game.dropPiece(k);
+		}
+	}
+	bool ans = false;
+	if(game.gameState() == Blank)
+		ans = true;
+	ASSERT_TRUE(ans);
+}
+
+TEST(PiezasTest, x_2_win_game)
+{
+	Piezas game;
+	for(int i = 0; i < 3; i++){
+		for(int k = 0; k < 4; k++){
+			game.dropPiece(k);
+			game.dropPiece(-1);
+		}
+	}
+	bool ans = false;
+	if(game.gameState() == X)
+		ans = true;
+	ASSERT_TRUE(ans);
+}
+
 
