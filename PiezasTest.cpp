@@ -130,7 +130,7 @@ TEST(PiezasTest, o_win_game)
 	game.dropPiece(0); // x
 	game.dropPiece(3);
 	Piece test = game.gameState();
-	Piece ans = Blank;
+	Piece ans = O;
 	ASSERT_EQ(test, ans);
 }
 
