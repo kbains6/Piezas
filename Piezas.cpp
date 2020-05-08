@@ -125,7 +125,7 @@ Piece Piezas::gameState()
 		int x_score = 0;
 		int o_score = 0;
 		for(int k = 0; k < 4; k++){
-			else if(board[i][k] == X){
+			if(board[i][k] == X){
 				x_score++;
 				if(x_score >= x_max){
 					x_max = x_score;	
