@@ -105,21 +105,21 @@ Piece Piezas::gameState()
 		int o_score = 0;
 		for(int k = 0; k < 3; k++){
 			if(board[k][i] == board[k-1][i]){
-			if(board[k][i] == Blank){
-				return Invalid;
-			}
-			else if(board[k][i] == X){
-				x_score++;
-				if(x_score >= x_max){
-					x_max = x_score;	
-				}	
-			}
-			else if(board[k][i] == O){
-				o_score++;
-				if(o_score >= o_max){
-					o_max = o_score;	
-				}	
-			}
+				if(board[k][i] == Blank){
+					return Invalid;
+				}
+				else if(board[k][i] == X){
+					x_score++;
+					if(x_score >= x_max){
+						x_max = x_score;	
+					}	
+				}
+				else if(board[k][i] == O){
+					o_score++;
+					if(o_score >= o_max){
+						o_max = o_score;	
+					}	
+				}
 			}
 		}
 	}	
@@ -127,19 +127,19 @@ Piece Piezas::gameState()
 		int x_score = 0;
 		int o_score = 0;
 		for(int k = 0; k < 4; k++){
-			if(board[k][i] == board[k][i-1]){
-			if(board[k][i] == X){
-				x_score++;
-				if(x_score >= x_max){
-					x_max = x_score;	
-				}	
-			}
-			else if(board[k][i] == O){
-				o_score++;
-				if(o_score >= o_max){
-					o_max = o_score;	
-				}	
-			}
+			if(board[i][k] == board[i][k-1]){
+				if(board[i][k] == X){
+					x_score++;
+					if(x_score >= x_max){
+						x_max = x_score;	
+					}	
+				}
+				else if(board[i][k] == O){
+					o_score++;
+					if(o_score >= o_max){
+						o_max = o_score;	
+					}	
+				}
 			}
 		}
 	}
