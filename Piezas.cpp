@@ -99,10 +99,10 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-	int x_score, o_score, x_max, o_max = 0;
+	int x_max, o_max = 0;
 	for(int i = 0; i < 4; i++){
-		x_score = 0;
-		o_score = 0;
+		int x_score = 0;
+		int o_score = 0;
 		for(int k = 0; k < 3; k++){
 			if(board[i][k] == Blank){
 				return Invalid;
@@ -111,38 +111,31 @@ Piece Piezas::gameState()
 				x_score++;
 				if(x_score >= x_max){
 					x_max = x_score;	
-				}
-				o_score = 0;
+				}	
 			}
 			else{
 				o_score++;
 				if(o_score >= o_max){
 					o_max = o_score;	
-				}
-				x_score = 0;
+				}	
 			}
 		}
 	}	
 	for(int i = 0; i < 3; i++){
-		x_score = 0;
-		o_score = 0;
+		int x_score = 0;
+		int o_score = 0;
 		for(int k = 0; k < 4; k++){
-			if(board[i][k] == Blank){
-				return Invalid;
-			}
 			else if(board[i][k] == X){
 				x_score++;
 				if(x_score >= x_max){
 					x_max = x_score;	
-				}
-				o_score = 0;
+				}	
 			}
 			else{
 				o_score++;
 				if(o_score >= o_max){
 					o_max = o_score;	
-				}
-				x_score = 0;
+				}	
 			}
 		}
 	}
